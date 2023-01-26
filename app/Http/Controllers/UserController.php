@@ -35,7 +35,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -81,12 +81,5 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
-    }
-
-    public function authenticate(Request $request){
-        $credential = $request->validate([
-           'username' => 'required',
-           'password' => 'required|min:8', 
-        ]);
     }
 }

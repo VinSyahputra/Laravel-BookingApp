@@ -19,8 +19,8 @@
             <h5 class="card-title text-center pb-0 fs-4">Create Your Account</h5>
           </div>
 
-          <form class="row g-3 needs-validation">
-            
+          <form action="/register" method="post" class="row g-3 needs-validation">
+            @csrf
             <div class="col-12">
               <label for="name" class="form-label">Name</label>
               <input type="text" name="name" class="form-control" id="name" required>
@@ -49,7 +49,7 @@
               </div>
             </div>
             <div class="col-12">
-              <button class="btn btn-primary w-100" type="submit">Login</button>
+              <button class="btn btn-primary w-100" type="submit">Submit</button>
             </div>
             <div class="col-12">
               <p class="small mb-0">Already have account? <a href="/login">Login</a></p>

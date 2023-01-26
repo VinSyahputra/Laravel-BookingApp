@@ -9,6 +9,7 @@ class Room extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
     public function datas(){
         return $this->hasMany(Data::class);
     }

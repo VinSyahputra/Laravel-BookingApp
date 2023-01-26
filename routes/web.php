@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,16 +20,19 @@ Route::get('/', function () {
 });
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-});
+})->middleware('auth');
 
 Route::get('/login', function () {
     return view('auth.login');
-});
-Route::post('/login', [UserController::class, 'authenticate']);
+})->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout']);
+
 
 Route::get('/register', function () {
     return view('auth.register');
-});
+})->middleware('guest');
+Route::post('/register', [LoginController::class, 'store']);
 
 Route::fallback(function(){
     return view('404');

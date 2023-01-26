@@ -19,6 +19,19 @@
             <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
           </div>
 
+          @if (session()->has('success'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @endif
+          @if (session()->has('fail'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('fail') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @endif
+
           <form action="/login" method="post" class="row g-3 needs-validation">
             @csrf
             <div class="col-12">

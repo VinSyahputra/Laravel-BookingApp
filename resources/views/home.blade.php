@@ -46,7 +46,12 @@
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Shuffle</span></h2>
                 <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                <a href="/login" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+                @auth
+                  <a href="/dashboard" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+                @endauth
+                @guest
+                  <a href="/login" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+                @endguest
               </div>
             </div>
           </div>
@@ -57,7 +62,12 @@
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
                 <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                <a href="/login" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+                @auth
+                  <a href="/dashboard" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+                @endauth
+                @guest
+                  <a href="/login" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+                @endguest
               </div>
             </div>
           </div>
@@ -68,7 +78,12 @@
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
                 <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                <a href="/login" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+                @auth
+                  <a href="/dashboard" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+                @endauth
+                @guest
+                  <a href="/login" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+                @endguest
               </div>
             </div>
           </div>
