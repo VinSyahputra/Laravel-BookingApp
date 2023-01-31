@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Room;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Data extends Model
 {
@@ -11,10 +13,10 @@ class Data extends Model
 
     protected $guarded = ['id'];
     
-    public function users(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
-    public function rooms(){
+    public function room(){
         return $this->belongsTo(Room::class);
     }
 }

@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.main')
+
 @section('container')
-<div class="table-responsive">
+
     <table class="table my-5">
         <thead>
             <tr>
@@ -28,9 +29,8 @@
             </tr>
             @endforeach
         </tbody>
-
+        
     </table>
-    {{ $data->links() }}
-</div>
-    
+
+
 @endsection

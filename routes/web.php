@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\Data;
+use App\Models\Room;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 
@@ -19,8 +23,21 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/dashboard', function () {
-    return view('dashboard.index');
+    return view('dashboard.index', [
+        'data' => Data::paginate(5),
+        'rooms' => Room::all(),
+    ]);
 })->middleware('auth');
+
+Route::get('/room/{room:slug}', function($slug){
+    $id = Room::select('id')->where('slug', $slug)->first();
+    // return Data::where('room_id', $id->id)->get();
+        return view('dashboard.room.index', [
+            'rooms' => Room::all(),
+            'data' => Data::where('room_id', $id->id)->get(),
+        ]);
+});
+
 
 Route::get('/login', function () {
     return view('auth.login');

@@ -50,7 +50,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <span class="rounded-circle bg-primary text-white" style="padding-top: 10px; padding-bottom:10px; padding-left:16px; padding-right:16px;">{{ substr(auth()->user()->name, 0, 1) }}</span>
+            <span class="rounded-circle bg-primary text-white" style="padding-top: 10px; padding-bottom:10px; padding-left:16px; padding-right:16px;">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
             <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->name }}</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -118,41 +118,30 @@
           <i class="bi bi-menu-button-wide"></i><span>Booking Rooms</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="booking-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          @foreach ($rooms as $room)
           <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Alerts</span>
+            <a href="/room/{{ $room->slug }}">
+              <i class="bi bi-circle"></i><span>{{ $room->name }}</span>
             </a>
           </li>
+          @endforeach
         </ul>
       </li><!-- End Components Nav -->
 
       <li class="nav-heading">Master</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#rooms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-building"></i><span>Rooms</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" href="/dashboard">
+          <i class="bi bi-building"></i>
+          <span>Rooms</span>
         </a>
-        <ul id="rooms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Alerts</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
-
+      </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#users-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-people"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" href="/dashboard">
+          <i class="bi bi-people"></i>
+          <span>Users</span>
         </a>
-        <ul id="users-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Alerts</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
+      </li><!-- End Dashboard Nav -->
 
     </ul>
 
