@@ -32,11 +32,13 @@ Route::get('/dashboard', function () {
 Route::get('/room/{room:slug}', function($slug){
     $id = Room::select('id')->where('slug', $slug)->first();
     // return Data::where('room_id', $id->id)->get();
-        return view('dashboard.room.index', [
+        return view('dashboard.room.show', [
             'rooms' => Room::all(),
             'data' => Data::where('room_id', $id->id)->get(),
         ]);
 });
+
+Route::resource('/rooms', RoomController::class);
 
 
 Route::get('/login', function () {

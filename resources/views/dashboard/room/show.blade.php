@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.main')
+
 @section('container')
-<div class="table-responsive">
+
     <table class="table my-5">
         <thead>
             <tr>
@@ -11,8 +12,8 @@
                 <td>Contact</td>
                 <td>Event Name</td>
                 <td>Time</td>
-                <td>Room</td>
                 <td>Description</td>
+                <td>Action</td>
             </tr>
         </thead>
         <tbody>
@@ -25,14 +26,14 @@
                 <td>{{ $d->contact }}</td>
                 <td>{{ $d->event_name }}</td>
                 <td>{{ $d->time_start .' - '. $d->time_end }}</td>
-                <td>{{ $d->room->name }}</td>
                 <td>{{ $d->description }}</td>
+                <td><button class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Data"><i class="bi bi-pencil-square"></i></button></td>
+                <td><button class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Data"><i class="bi bi-trash-fill"></i></button></td>
             </tr>
             @endforeach
         </tbody>
-
+        
     </table>
-    {{ $data->links() }}
-</div>
-    
+
+
 @endsection

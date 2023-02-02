@@ -131,13 +131,13 @@
       <li class="nav-heading">Master</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/dashboard">
+        <a class="nav-link collapsed" href="/rooms">
           <i class="bi bi-building"></i>
           <span>Rooms</span>
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/dashboard">
+        <a class="nav-link collapsed" href="/users">
           <i class="bi bi-people"></i>
           <span>Users</span>
         </a>
