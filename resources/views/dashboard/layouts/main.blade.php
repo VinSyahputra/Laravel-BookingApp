@@ -128,8 +128,10 @@
         </ul>
       </li><!-- End Components Nav -->
 
+      @can('admin')
+          
       <li class="nav-heading">Master</li>
-
+      
       <li class="nav-item">
         <a class="nav-link collapsed" href="/rooms">
           <i class="bi bi-building"></i>
@@ -141,8 +143,10 @@
           <i class="bi bi-people"></i>
           <span>Users</span>
         </a>
-      </li><!-- End Dashboard Nav -->
-
+      </li>
+      <!-- End Dashboard Nav -->
+      @endcan
+      
     </ul>
 
   </aside><!-- End Sidebar-->

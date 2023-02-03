@@ -7,11 +7,11 @@
             <thead>
                 <tr>
                     <th scope="row">No</th>
-                    <td>Name</td>
-                    <td>Slug</td>
-                    <td>Created at</td>
-                    <td>Updated at</td>
-                    <td>Action</td>
+                    <th>Name</th>
+                    <th>Slug</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,8 +20,8 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $room->name }}</td>
                     <td>{{ $room->slug }}</td>
-                    <td>{{ $room->created_at }}</td>
-                    <td>{{ $room->updated_at }}</td>
+                    <td>{{ $room->created_at->format('d-M-Y') }}</td>
+                    <td>{{ $room->updated_at->format('d-M-Y') }}</td>
                     <td><button class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Data"><i class="bi bi-pencil-square"></i></button></td>
                     <td><button class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Data"><i class="bi bi-trash-fill"></i></button></td>
                 </tr>
@@ -29,6 +29,7 @@
             </tbody>
             
         </table>
+        {{ $rooms->links() }}
     </div>
 
 

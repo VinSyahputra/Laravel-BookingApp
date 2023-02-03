@@ -16,7 +16,7 @@ class RoomController extends Controller
     public function index()
     {
         return view('dashboard.room.index',[
-            'rooms' => Room::all(),
+            'rooms' => Room::paginate(5),
         ]);
     }
 

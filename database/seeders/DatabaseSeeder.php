@@ -18,24 +18,25 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         
-        User::create([
-            'name' => 'lorem',
-            'username' => 'lorem',
-            'contact' => 'lorem',
-            'password' => bcrypt('lorem123'),
-        ]);
-        Room::create([
-            'name' => 'Istimewa',
-            'slug' => 'istimewa',
-        ]);
-        Room::create([
-            'name' => 'Modern',
-            'slug' => 'modern',
-        ]);
-        Room::create([
-            'name' => 'Aspirasi',
-            'slug' => 'aspirasi',
-        ]);
-        \App\Models\Data::factory(10)->create();
+        // User::create([
+        //     'name' => 'admin',
+        //     'username' => 'admin',
+        //     'contact' => 'admin',
+        //     'password' => bcrypt('admin123'),
+        // ]);
+        // Room::create([
+        //     'name' => 'Istimewa',
+        //     'slug' => 'istimewa',
+        // ]);
+        // Room::create([
+        //     'name' => 'Modern',
+        //     'slug' => 'modern',
+        // ]);
+        // Room::create([
+        //     'name' => 'Aspirasi',
+        //     'slug' => 'aspirasi',
+        // ]);
+        \App\Models\Data::factory(1000)->create();
+        // \App\Models\User::factory(40)->create();
     }
 }

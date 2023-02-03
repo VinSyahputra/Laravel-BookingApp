@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.user.index', [
+            'rooms' => Room::all(),
+            'users' => User::where('is_admin', false)->paginate(10)->onEachSide(1)
+        ]);
     }
 
     /**
@@ -24,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.user.create',[
+            'rooms' => Room::all(),
+        ]);
     }
 
     /**
@@ -35,7 +41,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validated = $request->validate([
+            'name' => 'required',
+            'username' => 'required|unique:users',
+            'password' => 'required|min:8|confirmed',
+            'contact' => 'required',
+            'is_admin' => 'required'
+        ]);
+
+        $validated['password'] = bcrypt($validated['password']);
+
+        // return $request;
+        User::create($validated);
+        return redirect('/users/create')->with('success', 'create user account successfully');
     }
 
     /**

@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 Route::get('/dashboard', function () {
     return view('dashboard.index', [
-        'data' => Data::paginate(5),
+        'data' => Data::with(['user', 'room'])->paginate(5)->onEachSide(1), //error ini bisa diakali dengan memindahkan return view ke controller
         'rooms' => Room::all(),
     ]);
 })->middleware('auth');
@@ -39,6 +39,7 @@ Route::get('/room/{room:slug}', function($slug){
 });
 
 Route::resource('/rooms', RoomController::class);
+Route::resource('/users', UserController::class)->middleware('admin');
 
 
 Route::get('/login', function () {
@@ -52,6 +53,13 @@ Route::get('/register', function () {
     return view('auth.register');
 })->middleware('guest');
 Route::post('/register', [LoginController::class, 'store']);
+
+Route::get('/test', function(){
+    return view('test', [
+        'data' => Data::with(['user', 'room'])->get(),
+        'rooms' => Room::all(),
+    ]);
+});
 
 Route::fallback(function(){
     return view('404');
