@@ -29,6 +29,9 @@
   <!-- Template Main CSS File -->
   <link href="/css/loginCSS.css" rel="stylesheet">
 
+  {{-- script sweetalert2 --}}
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>

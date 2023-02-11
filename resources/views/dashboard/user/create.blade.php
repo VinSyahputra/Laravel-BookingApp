@@ -2,13 +2,6 @@
 @section('container')
 <div class="card col-md-6 mx-auto my-4 p-4">
 
-  {{-- @if (session()->has('success'))
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Success</strong> {{ session('success') }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  @endif --}}
-
     <div class="card-body">
       <h5 class="card-title"><span class="fs-4">Create </span> User Account</h5>
 

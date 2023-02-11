@@ -53,7 +53,7 @@ class UserController extends Controller
 
         // return $request;
         User::create($validated);
-        return redirect('/users/create')->with('success', 'create user account successfully');
+        return redirect('/users')->with('create', '');
     }
 
     /**
@@ -75,7 +75,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('dashboard.user.edit',[
+            'rooms' => Room::all(),
+            'user' => $user,
+            'default' => 'user12345',
+        ]);
     }
 
     /**
@@ -87,7 +91,15 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'password' => 'required|min:8',
+            'contact' => 'required',
+        ]);
+        $validated['password'] = bcrypt($validated['password']);
+
+        User::where('id', $user->id)->update($validated);
+        return redirect('/users')->with('update', '');
     }
 
     /**
@@ -98,6 +110,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        User::destroy($user->id);
+        return redirect('/users')->with('delete', '');
     }
 }
