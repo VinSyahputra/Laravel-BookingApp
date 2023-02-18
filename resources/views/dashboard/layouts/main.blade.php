@@ -123,7 +123,7 @@
         <ul id="booking-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           @foreach ($rooms as $room)
           <li>
-            <a href="/room/{{ $room->slug }}">
+            <a href="/data/{{ $room->slug }}">
               <i class="bi bi-circle"></i><span>{{ $room->name }}</span>
             </a>
           </li>

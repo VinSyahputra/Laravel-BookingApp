@@ -64,7 +64,6 @@
           showCancelButton: true,
           confirmButtonText: 'Generate',
         }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
             pass.setAttribute('value', defaultpass.value);
             label.textContent = pass.value;

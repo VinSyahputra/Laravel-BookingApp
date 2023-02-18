@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Data;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class RoomController extends Controller
 {
@@ -16,7 +17,7 @@ class RoomController extends Controller
     public function index()
     {
         return view('dashboard.room.index',[
-            'rooms' => Room::paginate(5),
+            'rooms' => Room::paginate(10),
         ]);
     }
 
@@ -27,7 +28,9 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.room.create', [
+            'rooms' => Room::all()
+        ]);
     }
 
     /**
@@ -38,7 +41,15 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:rooms'
+        ]);
+
+        $validated['name'] = ucfirst(strtolower($validated['name']));
+
+        Room::create($validated);
+        return redirect('/rooms')->with('create', '');
     }
 
     /**
@@ -60,7 +71,10 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+        return view('dashboard.room.edit', [
+            'rooms' => Room::all(),
+            'room' => $room
+        ]);
     }
 
     /**
@@ -72,7 +86,13 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:rooms'
+        ]);
+
+        Room::where('id',$room->id)->update($validated);
+        return redirect('/rooms')->with('update', '');
     }
 
     /**
@@ -83,6 +103,12 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        Room::destroy($room->id);
+        return redirect('/rooms')->with('delete', '');
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Room::class, 'slug', $request->name);
+        return response()->json(['slug' => $slug]);
     }
 }
